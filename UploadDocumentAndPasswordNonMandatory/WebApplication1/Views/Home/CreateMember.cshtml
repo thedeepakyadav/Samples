@@ -1,0 +1,45 @@
+﻿@model WebApplication1.Models.Member
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateMember</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    
+        </head>
+        <body>
+            @using (Html.BeginForm("Save","Home",FormMethod.Post))
+    {
+
+        <div class="form-horizontal">
+                    <h4>Member</h4>
+                    <hr />
+                    @Html.ValidationSummary(false)
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.TextBoxFor(m => m.MemberID, new object() { })
+                            @Html.TextBoxFor(m=>m.UserName)
+                            @Html.ValidationMessageFor(m => m.UserName)
+
+                            @Html.TextBoxFor(m => m.Password, new { @Type="Password",})
+                            @Html.ValidationMessageFor(m => m.Password)
+
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+    }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </body>
+        </html>
